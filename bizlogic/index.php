@@ -7,20 +7,20 @@ elseif($type=='feed') feed();
 
 function login() 
 { 
-       require 'config.php'; 
+       require 'config.php';  //import config.php
        $json = json_decode(file_get_contents('php://input'), true); 
        $username = $json['username']; $password = $json['password']; 
-       $userData =''; $query = "select * from exam where username='$username' and password='$password'"; 
+       $userData =''; $query = "select * from User where username='$username' and password='$password'"; 
        $result= $db->query($query);
        $rowCount=$result->num_rows;
              
-        if($rowCount>0)//check for valid password and the username
+        if($rowCount>0)
         {
             $userData = $result->fetch_object();
             $id=$userData->id;
             $userData = json_encode($userData);
             echo '{"userData":'.$userData.'}';
-
+            //check for valid password and the username
             
         }
         else 
@@ -38,7 +38,7 @@ function feed(){
     $json = json_decode(file_get_contents('php://input'), true);
     $id=$json['id'];
     
-    $query = "SELECT * FROM exam WHERE id=$id ORDER BY id DESC LIMIT 10";
+    $query = "SELECT * FROM User WHERE id=$id ORDER BY id DESC LIMIT 10";
     //select user details from the database
     $result = $db->query($query); 
 
