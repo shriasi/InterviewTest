@@ -5,6 +5,7 @@ import Home from '././components/Home/Home';
 import Login from '././components/Login/Login';
 import NotFound from '././components/NotFound/NotFound';
 
+//routes
 const Routes = () => (
 <BrowserRouter >
 <Switch>
@@ -19,26 +20,28 @@ export default Routes;
 
 
 export function PostData(type, userData) {
-let BaseURL = 'http://localhost/react-php/api/index.php';
+    
+//base URL
+let BaseURL = 'http://localhost/bizlogic/api/index.php';
 return new Promise((resolve, reject) =>{
 
 fetch(BaseURL+'?tp='+type,
 {
 
-method: 'POST',
+method: 'POST', //sends data
 headers:
 {
-'Accept': 'application/json',
-'Content-Type': 'application/json'
-},
-body:JSON.stringify(userData)
-})
-.then((response) => response.json()
-.then((res) => {
-resolve(res);
-}))
-.catch((error) => {
-reject(error);
-});
-});
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+    },
+    body:JSON.stringify(userData)
+    })
+    .then((response) => response.json()
+    .then((res) => {
+    resolve(res);
+    }))
+    .catch((error) => {
+    reject(error);
+    });
+    });
 }
