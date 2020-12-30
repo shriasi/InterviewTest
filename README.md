@@ -10,7 +10,7 @@ Simple Login with React and PHP + MySql
 
 commands
 
-``
+````
 create react app
 
 npx create-react-app myapp
@@ -30,4 +30,4 @@ run app
 
 npm start
 
-``
+````
